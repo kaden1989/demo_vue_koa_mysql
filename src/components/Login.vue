@@ -1,6 +1,6 @@
 <template>
-  <div>
-    dfafdafafsdf
+  <div class="login">
+    <h1>欢迎登录</h1>
     <van-cell-group>
       <van-field
         v-model="username"
@@ -11,6 +11,8 @@
         placeholder="请输入用户名"
         @click-right-icon="$toast('question')"
       />
+    </van-cell-group>
+    <van-cell-group>
       <van-field
         v-model="password"
         type="password"
@@ -19,7 +21,9 @@
         required
       />
     </van-cell-group>
-    <van-button round type="info">登录</van-button>
+    <div class="btn">
+      <van-button round type="info" size="large" @click="jump(password,username)">登录</van-button>
+    </div>
   </div>
 </template>
 <script>
@@ -31,10 +35,31 @@
         password:'',
         username:''
       }
+    },
+    methods:{
+      jump:function (password,username) {
+        console.log('jump--');
+        if(password == '123456' && username == 'kaden'){
+          this.$router.push('/todoList')
+        }else{
+          this.$dialog.alert({
+            message: '用户名/密码不对，请重新输入！'
+          });
+        }
+
+      }
     }
   }
 </script>
 
 <style scoped>
-
+  .login{
+    width: 100%;
+    padding: 20px 15%;
+    box-sizing: border-box;
+  }
+  .btn{
+    margin-top: 20px;
+    width: 100%;
+  }
 </style>
