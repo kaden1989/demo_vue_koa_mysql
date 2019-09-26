@@ -10,7 +10,22 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    /**
+     * proxyTable:
+     * 我们在组件里请求的地址如果是/api/xxxx实际上请求的是http://localhost:8082/api/xxxx，
+     * 但是由于webpack帮我们代理了localhost的8082端口的服务，
+     * 所以我们可以把实际是跨域的请求当做是同域下的接口来调用。
+    * */
+    proxyTable: {
+      '/auth':{
+        target:'http://localhost:8082',
+        changeOrigin:true
+      },
+      '/api':{
+        target:'http://localhost:8082',
+        changeOrigin:true
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

@@ -22,7 +22,7 @@
       />
     </van-cell-group>
     <div class="btn">
-      <van-button round type="info" size="large" @click="jump(password,username)">登录</van-button>
+      <van-button round type="info" size="large" @click="login">登录</van-button>
     </div>
   </div>
 </template>
@@ -37,15 +37,28 @@
       }
     },
     methods:{
-      jump:function (password,username) {
-        console.log('jump--');
-        if(password == '123456' && username == 'kaden'){
-          this.$router.push('/todoList')
-        }else{
-          this.$dialog.alert({
-            message: '用户名/密码不对，请重新输入！'
-          });
+      login:function () {
+        let userData = {
+          username:this.username,
+          password:this.password
         }
+
+        this.$http.post('/auth/user',userData)
+          .then(res=>{
+            if(res.data.success){
+              sessionStorage.setItem('demo-token',res.data.token)//
+              this.$notify({ type: 'success', message: "Login Success !" });
+              this.$router.push('/todoList')
+              console.log('chenggong')
+            }else{
+              sessionStorage.setItem('demo-token',null)
+              this.$notify({ type: 'warning', message: res.data.info });
+            }
+          },err=>{
+            sessionStorage.setItem('demo-token',null)
+            this.$notify({ type: 'warning', message: '请求错误!' });
+          })
+
 
       }
     }
