@@ -55,6 +55,7 @@ const register = function* (){
     }
   }
 }
+
 module.exports = {
   getUserInfo, // 把获取用户信息的方法暴露出去
   postUserAuth,

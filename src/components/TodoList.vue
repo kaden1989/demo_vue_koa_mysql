@@ -46,14 +46,18 @@
         </van-tab>
       </van-tabs>
     </div>
+    <Logout></Logout>
+
   </div>
 </template>
 
 <script>
   import jwt from 'jsonwebtoken'
+  import Logout from './Logout'
 
   export default {
     name: 'TodoList',
+    components: {Logout},
     created(){
       const userInfo = this.getUserInfo();
       if(userInfo != null){

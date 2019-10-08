@@ -19,6 +19,7 @@
         label="密码"
         placeholder="请输入密码"
         required
+        error-message
       />
     </van-cell-group>
     <div class="btn">
@@ -42,7 +43,14 @@
           username:this.username,
           password:this.password
         }
-
+        if(!userData.username){
+          this.$notify({ type: 'warning', message: "请输入用户名!" });
+          return
+        }
+        if(!userData.password){
+          this.$notify({ type: 'warning', message: "请输入密码!" });
+          return
+        }
         this.$http.post('/auth/register',userData)
           .then(res=>{
             if(res.data.success){

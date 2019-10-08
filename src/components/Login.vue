@@ -22,7 +22,8 @@
       />
     </van-cell-group>
     <div class="btn">
-      <van-button round type="info" size="large" @click="login">登录</van-button>
+      <van-button class="LR" plain round type="info" size="normal" @click="register">注册</van-button>
+      <van-button class="LR" round type="info" size="normal" @click="login" style="margin-left: auto">登录</van-button>
     </div>
   </div>
 </template>
@@ -58,8 +59,9 @@
             sessionStorage.setItem('demo-token',null)
             this.$notify({ type: 'warning', message: '请求错误!' });
           })
-
-
+      },
+      register:function () {
+        this.$router.push('/regeiste')
       }
     }
   }
@@ -74,5 +76,9 @@
   .btn{
     margin-top: 20px;
     width: 100%;
+    display: flex;
+  }
+  .LR{
+    width: 45%;
   }
 </style>
