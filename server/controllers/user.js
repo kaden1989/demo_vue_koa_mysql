@@ -38,7 +38,25 @@ const postUserAuth = function* (){
   }
 }
 
+const register = function* (){
+  let data = this.request.body,
+    userInfo = yield user.getUserByName(data.username);
+  if(userInfo ==null){
+    let salt = bcrypt.genSaltSync(10);
+    data.password = bcrypt.hashSync(data.password, salt);
+    const result = yield user.createUser(data);
+    this.body = {
+      success: true
+    }
+  }else{
+    this.body={
+      success:false,
+      info:'用户已存在！'
+    }
+  }
+}
 module.exports = {
   getUserInfo, // 把获取用户信息的方法暴露出去
-  postUserAuth
+  postUserAuth,
+  register
 }

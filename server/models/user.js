@@ -26,7 +26,17 @@ const getUserByName = function* (name){ // 注意是function* 而不是function 
   return userInfo // 返回数据
 }
 
+//注册
+const createUser = function* (data){ // 给某个用户创建一条todolist
+  console.log('register2------',data)
+  yield User.create({
+    user_name:data.username,
+    password:data.password
+  })
+  return true
+}
 module.exports = {
   getUserById,  // 导出getUserById的方法，将会在controller里调用
-  getUserByName
+  getUserByName,
+  createUser
 }

@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Login from '@/components/Login'
 import TodoList from '@/components/TodoList'
+import regeiste from '@/components/regeiste'
 
 Vue.use(Router)
 
@@ -10,6 +11,7 @@ const routes = [
 //将根URL加入到路由表并声明对应Hello组件.
 //   { path: '/', component: HelloWorld },
   {path:'/', component:Login},
+  {path:'/regeiste', component:regeiste},
   {path:'/todoList', component:TodoList},
 ]
 // 创建路由器实例，并且传入`routes`变量作为路由。
@@ -26,6 +28,8 @@ router.beforeEach((to,from,next)=>{
     if(token != null && token !='null'){
       next('/todoList')
     }
+    next();
+  }else if(to.path == '/regeiste'){
     next();
   }else{
     if(token != null && token !='null'){
