@@ -12,6 +12,7 @@ const getUserInfo = function* (){
 
 const postUserAuth = function* (){
   const data = this.request.body;
+  console.log('111',this.request)
   const userInfo = yield user.getUserByName(data.username);
   if(userInfo !=null){
     if(!bcrypt.compareSync(data.password,userInfo.password)){

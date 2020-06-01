@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import auth from './api'
 import HelloWorld from '@/components/HelloWorld'
 import Login from '@/components/Login'
 import TodoList from '@/components/TodoList'
 import regeiste from '@/components/Regeiste'
+import test from '@/components/test'
 
 Vue.use(Router)
 
@@ -12,7 +14,8 @@ const routes = [
 //   { path: '/', component: HelloWorld },
   {path:'/', component:Login},
   {path:'/regeiste', component:regeiste},
-  {path:'/todoList', component:TodoList},
+  {path:'/todoList', auth,component:TodoList},
+  {path:'/test',component:test},
 ]
 // 创建路由器实例，并且传入`routes`变量作为路由。
 // 你还可以传入别的参数，不过在这里尽量简单化就可以了

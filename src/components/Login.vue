@@ -43,7 +43,7 @@
           username:this.username,
           password:this.password
         }
-
+console.log('userData',userData)
         this.$http.post('/auth/user',userData)
           .then(res=>{
             if(res.data.success){

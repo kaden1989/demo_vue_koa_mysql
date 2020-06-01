@@ -1,8 +1,9 @@
 # demo
 
-> A Vue.js project
-
-## Build Setup
+> A Vue.js project  
+> 技术实现 VUE + KOA + MySQL  
+> 项目地址 
+## 一、前端服务
 
 ``` bash
 # install dependencies
@@ -19,4 +20,10 @@ npm run build --report
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-# demo_vue_koa_mysql
+
+
+## 二、服务端
+1.启动
+```
+  终端输入 node app.js 启动服务端
+```
