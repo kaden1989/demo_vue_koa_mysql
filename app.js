@@ -1,7 +1,9 @@
 const app = require('koa')()
   , json = require('koa-json')
+  , path = require('path')
+  , serve = require('koa-static')
   , logger = require('koa-logger')// 引入各种依赖
-  ,routers = require('./server/routes/index');
+  , routers = require('./server/routes/index');
 
 const port = 8082;
 
@@ -35,7 +37,7 @@ app.use(function *(next) {
 app.on('error', function(err, ctx){
   console.log('server error', err);
 });
-
+app.use(serve(path.resolve('dist'))); // 将webpack打包好的项目目录作为Koa静态文件服务的目录
 app.use(routers); // 将路由规则挂载到Koa上。
 
 app.listen(port,() => {
