@@ -1,6 +1,6 @@
 const db = require('../config/db.js'),
   userModel = '../schema/user.js'; // 引入user的表结构
-const TodolistDb = db.Todolist; // 引入数据库
+const TodolistDb = db.projectData; // 引入数据库
 
 const User = TodolistDb.import(userModel); // 用sequelize的import方法引入表结构，实例化了User。
 

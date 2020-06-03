@@ -34,12 +34,12 @@ app.use(function *(next) {
   }
 })
 
-app.on('error', function(err, ctx){
-  console.log('server error', err);
-});
 app.use(serve(path.resolve('dist'))); // 将webpack打包好的项目目录作为Koa静态文件服务的目录
 app.use(routers); // 将路由规则挂载到Koa上。
 
+app.on('error', function(err, ctx){
+  console.log('server error', err);
+});
 app.listen(port,() => {
   console.log(`server in port http://localhost:${port}`);
 });

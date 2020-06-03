@@ -1,6 +1,6 @@
 const db = require('../config/db'),
   todoModel = '../schema/list.js';//引入todolist的表结构
-const TodolistDb = db.Todolist;//引入数据库
+const TodolistDb = db.projectData;//引入数据库
 
 const Todolist = TodolistDb.import(todoModel);
 
