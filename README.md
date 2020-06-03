@@ -28,7 +28,7 @@ npm run build --report
 ## 三、目录结构
 ```
 │  app.js  服务端启动文件
-│  index.html 启动页面
+│  index.html 主页面
 │  package-lock.json
 │  package.json 
 │  README.md
@@ -56,7 +56,7 @@ npm run build --report
 │  │      todolist.js
 │  │      user.js
 │  │      
-│  ├─models 
+│  ├─models （数据库）模型
 │  │      todolist.js
 │  │      user.js
 │  │      
@@ -87,6 +87,10 @@ npm run build --report
 │  └─router 路由
 │          api.js
 │          index.js
+│
+├─dist // Vue build 后的文件夹
+│   ├── index.html // 入口文件
+│   └── static // 静态资源
 │          
 └─static
         .gitkeep
